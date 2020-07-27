@@ -11,7 +11,8 @@ const img = <img src="../iss.svg" alt="iss" height="30px" />
 const SpaceStation = ({ img }) => <div>{img}</div>
 
 const Map = ReactMapboxGl({
-    accessToken: MAP_KEY
+    accessToken: MAP_KEY,
+    
 });
 
 
@@ -72,7 +73,7 @@ const IssSpace = () => {
         
 
                 <Map
-                    style={"mapbox://styles/mapbox/streets-v9"}
+                    style={["mapbox://styles/mapbox/streets-v9"]}
                     containerStyle={{
                         height: '50vh',
                         width: '100vw'
