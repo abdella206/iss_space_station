@@ -1,10 +1,10 @@
 
 import React, { useState, useEffect } from "react";
-import axios from 'axios';
+//import axios from 'axios';
 import ReactPlayer from 'react-player'
 import ReactMapboxGl, { Marker } from 'react-mapbox-gl';
 
-const ISS_URL = "https://api.open-notify.org/iss-now.json"
+const ISS_URL = "http://api.open-notify.org/iss-now.json"
 const MAP_KEY = 'pk.eyJ1IjoiYWJkZWxsYTIwNjYiLCJhIjoiY2tkMnN6Mmx2MTExejJxcXZpbmMxc211bCJ9.0pvU-rBc2_cumF1N-Ct1ow'
 const img = <img src="../iss.svg" alt="iss" height="30px" />
 
@@ -34,23 +34,30 @@ const IssSpace = () => {
 
 
 
-
     const getCoordinates = () => {
-
-        const fetchData = async () => {
-            axios.get(ISS_URL)
-                .then(res => {
-                    console.log(res.data)
-                    setIssLocation({
-                        center: {
-                            lat: res.data.iss_position.latitude,
-                            lng: res.data.iss_position.longitude
-                        }
-                    })
-                })
-        }
-        fetchData();
+        fetch(ISS_URL)
+            .then(res => res.json())
+            .then(data => setIssLocation({
+                center: {
+                    lat: data.iss_position.latitude,
+                    lng: data.iss_position.longitude
+                }
+            }))
     }
+
+    // const getCoordinates = () => {
+
+    //     axios.get(ISS_URL)
+    //         .then(res => {
+    //             console.log(res.data)
+    //             setIssLocation({
+    //                 center: {
+    //                     lat: res.data.iss_position.latitude,
+    //                     lng: res.data.iss_position.longitude
+    //                 }
+    //             })
+    //         })
+    // }
 
 
     console.log("LAT:", issLocation.center.lat)
