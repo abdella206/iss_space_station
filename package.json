@@ -2,6 +2,7 @@
   "name": "iss-space2",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://api.open-notify.org",
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@testing-library/jest-dom": "^4.2.4",
@@ -20,15 +21,12 @@
     "react-particles-js": "^3.3.0",
     "react-player": "^2.6.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.1",
-    "react-star-wars-crawl": "^2.0.0",
-    "react-starfield-animation": "^1.0.1",
-    "styled-components": "^5.1.1"
+    "react-scripts": "3.4.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "CI= react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest --watchAll",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -45,5 +43,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {}
 }
