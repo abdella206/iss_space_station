@@ -27,23 +27,35 @@ const Astronauts = () => {
 
     const [astro, setAstro] = useState([]);
 
+    // useEffect(() => {
+
+    //     axios.get(`http://api.open-notify.org/astros.json`)
+    //         .then((res) => {
+    //             console.log(res.data.people)
+    //             setAstro(res.data.people)
+    //         })
+
+
+    // }, [astro])
+
+
     useEffect(() => {
-
-        axios.get(`http://api.open-notify.org/astros.json`)
-            .then((res) => {
-                console.log(res.data.people)
-                setAstro(res.data.people)
-            })
-
-
-    }, [astro])
+        const fetchData = async () => {
+            axios.get('http://api.open-notify.org/astros.json')
+                .then(res => {
+                    console.log(res.data.people)
+                    setAstro(res.data.people)
+                })
+        }
+        fetchData();
+    }, [])
 
 
 
     return (
         <>
 
-        
+
             <TableContainer component={Paper} style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)', color: 'gold' }}>
                 <Table className={classes.table} aria-label="simple table">
                     <TableHead>
@@ -67,7 +79,7 @@ const Astronauts = () => {
                 </Table>
             </TableContainer>
 
-        
+
             <Particles
                 params={{
                     "particles": {

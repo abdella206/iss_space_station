@@ -12,7 +12,7 @@ const SpaceStation = ({ img }) => <div>{img}</div>
 
 const Map = ReactMapboxGl({
     accessToken: MAP_KEY,
-    
+
 });
 
 
@@ -37,16 +37,19 @@ const IssSpace = () => {
 
     const getCoordinates = () => {
 
-        axios.get(ISS_URL)
-            .then((res) => {
-                console.log(res.data)
-                setIssLocation({
-                    center: {
-                        lat: res.data.iss_position.latitude,
-                        lng: res.data.iss_position.longitude
-                    }
+        const fetchData = async () => {
+            axios.get(ISS_URL)
+                .then(res => {
+                    console.log(res.data)
+                    setIssLocation({
+                        center: {
+                            lat: res.data.iss_position.latitude,
+                            lng: res.data.iss_position.longitude
+                        }
+                    })
                 })
-            })
+        }
+        fetchData();
     }
 
 
@@ -69,29 +72,29 @@ const IssSpace = () => {
 
 
 
-            
-        
-
-                <Map
-                    style={["mapbox://styles/mapbox/streets-v9"]}
-                    containerStyle={{
-                        height: '50vh',
-                        width: '100vw'
-                    }}
-                    center={[issLocation.center.lng, issLocation.center.lat]}
-                >
-
-                    <Marker coordinates={[issLocation.center.lng, issLocation.center.lat]}>
-
-                        <SpaceStation
 
 
-                            img={img}
-                        />
-                    </Marker>
-                    
-                </Map>
-            
+
+            <Map
+                style={"mapbox://styles/mapbox/streets-v9"}
+                containerStyle={{
+                    height: '50vh',
+                    width: '100vw'
+                }}
+                center={[issLocation.center.lng, issLocation.center.lat]}
+            >
+
+                <Marker coordinates={[issLocation.center.lng, issLocation.center.lat]}>
+
+                    <SpaceStation
+
+
+                        img={img}
+                    />
+                </Marker>
+
+            </Map>
+
         </div>
     )
 
