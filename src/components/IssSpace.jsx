@@ -4,8 +4,8 @@ import axios from 'axios';
 import ReactPlayer from 'react-player'
 import ReactMapboxGl, { Marker } from 'react-mapbox-gl';
 
-const ISS_URL = "http://api.open-notify.org/iss-now.json"
-const MAP_KEY = process.env.REACT_APP_MAP_KEY
+const ISS_URL = "https://api.open-notify.org/iss-now.json"
+const MAP_KEY = 'pk.eyJ1IjoiYWJkZWxsYTIwNjYiLCJhIjoiY2tkMnN6Mmx2MTExejJxcXZpbmMxc211bCJ9.0pvU-rBc2_cumF1N-Ct1ow'
 const img = <img src="../iss.svg" alt="iss" height="30px" />
 
 const SpaceStation = ({ img }) => <div>{img}</div>

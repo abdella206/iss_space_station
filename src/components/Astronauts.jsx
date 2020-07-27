@@ -41,7 +41,7 @@ const Astronauts = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            axios.get('http://api.open-notify.org/astros.json')
+            axios.get('https://api.open-notify.org/astros.json')
                 .then(res => {
                     console.log(res.data.people)
                     setAstro(res.data.people)
