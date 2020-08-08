@@ -72,7 +72,7 @@ const Home = () => {
                 </div>
             </section>
 
-            <Particles
+            {/* <Particles
                 params={{
                     "particles": {
                         "number": {
@@ -126,7 +126,7 @@ const Home = () => {
                         }
                     },
                     "retina_detect": true
-                }} />
+                }} /> */}
 
             <ReactAudioPlayer
                 src="../starwars.mp3"

@@ -47,6 +47,8 @@
   height: 100vh;
   position: relative;
   width: 100%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6),rgba(0, 0, 0, 0.6)), url('../src/img/starwars.jpg');
+  
 }
 
 .intro,

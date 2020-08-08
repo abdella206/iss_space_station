@@ -1,10 +1,10 @@
 
 import React, { useState, useEffect } from "react";
-//import axios from 'axios';
+import axios from 'axios';
 import ReactPlayer from 'react-player'
 import ReactMapboxGl, { Marker } from 'react-mapbox-gl';
 
-const ISS_URL = "http://api.open-notify.org/iss-now.json"
+const ISS_URL = "https://api.wheretheiss.at/v1/satellites/25544?units=miles"
 const MAP_KEY = 'pk.eyJ1IjoiYWJkZWxsYTIwNjYiLCJhIjoiY2tkMnN6Mmx2MTExejJxcXZpbmMxc211bCJ9.0pvU-rBc2_cumF1N-Ct1ow'
 const img = <img src="../iss.svg" alt="iss" height="30px" />
 
@@ -23,7 +23,7 @@ const IssSpace = () => {
 
     useEffect(() => {
         getCoordinates()
-        issLocation.interval = setInterval(getCoordinates, 3)
+        issLocation.interval = setInterval(getCoordinates, 3000)
 
     }, [issLocation]);
 
@@ -34,30 +34,30 @@ const IssSpace = () => {
 
 
 
-    const getCoordinates = () => {
-        fetch(ISS_URL)
-            .then(res => res.json())
-            .then(data => setIssLocation({
-                center: {
-                    lat: data.iss_position.latitude,
-                    lng: data.iss_position.longitude
-                }
-            }))
-    }
-
     // const getCoordinates = () => {
-
-    //     axios.get(ISS_URL)
-    //         .then(res => {
-    //             console.log(res.data)
-    //             setIssLocation({
-    //                 center: {
-    //                     lat: res.data.iss_position.latitude,
-    //                     lng: res.data.iss_position.longitude
-    //                 }
-    //             })
-    //         })
+    //     fetch(ISS_URL)
+    //         .then(res => res.json())
+    //         .then(data => setIssLocation({
+    //             center: {
+    //                 lat: data.iss_position.latitude,
+    //                 lng: data.iss_position.longitude
+    //             }
+    //         }))
     // }
+
+    const getCoordinates = () => {
+
+        axios.get(ISS_URL)
+            .then(res => {
+                console.log(res.data)
+                setIssLocation({
+                    center: {
+                        lat: res.data.latitude,
+                        lng: res.data.longitude
+                    }
+                })
+            })
+    }
 
 
     console.log("LAT:", issLocation.center.lat)
