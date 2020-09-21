@@ -13,6 +13,7 @@
     "gsap": "^3.4.2",
     "http-proxy-middleware": "^1.0.5",
     "mapbox-gl": "^1.11.1",
+    "netlify-cli": "^2.59.1",
     "react": "^16.13.1",
     "react-audio-player": "^0.13.0",
     "react-dom": "^16.13.1",

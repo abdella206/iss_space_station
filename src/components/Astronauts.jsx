@@ -28,8 +28,10 @@ const Astronauts = () => {
     const [astro, setAstro] = useState([]);
 
     useEffect(() => {
-
-        axios.get('http://api.open-notify.org/astros.json')
+        let config = {
+            headers: {'Access-Control-Allow-Origin': '*'}
+        }
+        axios.get('http://api.open-notify.org/astros.json' + config)
             .then((res) => {
                 console.log(res.data.people)
                 setAstro(res.data.people)
